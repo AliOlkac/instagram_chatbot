@@ -1,15 +1,15 @@
 # Aktif Bağlam
 
 ## Şu Anki Odak
-- Memory Bank (çekirdek proje dokümanları) kuruldu
-- Next.js scaffold ve temel API/Lib dizinleri açıldı
-- endpointler ve fonksiyonlar için taslaklar eklendi
-- Webhook endpointi test ve messageHandler parse güncellemesi yapıldı
+- Memory Bank kuruldu
+- Next.js scaffold ve temel endpointler hazır
+- Webhook ve messageHandler canlı test ve parse OK
+- OpenAI gerçek API entegrasyonu tamamlandı, webhook OpenAI yanıtı döndürür
 
 ## Son Değişiklikler
-- pages/api/webhook.ts güncellendi, IG event ve parse kontrolü eklendi
-- lib/messageHandler.ts gelen text/userId parse ve dummy yanıt ile güncellendi
+- lib/openaiClient.ts ile gerçek GPT api çağrısı yazıldı
+- lib/messageHandler.ts response zincirine adapte edildi
 
 ## Hedeflenen Sonraki Adımlar
-- Webhook endpointinin canlı POST ile test edilmesi
-- OpenAI ve IG API gerçek bağlantı kodları
+- OpenAI cevabı ile webhook endpointinin canlı testi
+- Ardından IG DM cevabı zinciri

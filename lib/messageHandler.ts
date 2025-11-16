@@ -1,10 +1,15 @@
-// messageHandler ana orchestrator
+import { generateReply } from './openaiClient';
+import { systemPrompt } from '../prompts/systemPrompt';
+
 export async function handleIncomingMessage(event: any) {
-  // IG Webhook dummy event yapısı: { sender: { id }, message: { text } }
   const userId = event.sender?.id || 'bilinmeyen';
   const text = event.message?.text || '';
-  // İleride OpenAI ve state yönetimi ile birleşecek
-  // Şimdilik cevabı örnekleştir
-  const response = `[TEST MODE] ${userId} şunu yazdı: ${text}`;
+  // Mesajlar prompt formatında hazırlanır
+  const messages = [
+    { role: 'system', content: systemPrompt },
+    { role: 'user', content: text }
+  ];
+  // OpenAI'den yanıt al
+  const response = await generateReply(messages);
   return { status: 'handled', response };
 }
